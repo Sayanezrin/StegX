@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StegX</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_login.css') }}">
+
+    
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>StegX</li>
+        </ul>
+        
+    </nav>
+    <form id="MainForm">
+        <div class="container1">
+            <h2>Sign Up</h2>
+            <form action="{{ url_for('signup') }}" method="post" id="signupForm" onsubmit="return false;">
+                <input type="email" id="signupEmail" placeholder="Email" required><br>
+                <input type="password" id="signupPassword" placeholder="Password" required><br>
+                <button type="submit" id="regUser">Signup</button>
+            </form>
+            <hr>
+            <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+        </div>
+    </form>
+    
+        <script type="module">
+        
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+            import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+            import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+              //const database = firebase.database("https://stegx-148c0-default-rtdb.firebaseio.com/");
+            const firebaseConfig = {
+      apiKey: "AIzaSyCO3yjzquAAGOp3O09V1pr51yqysNALeo0",
+      authDomain: "stegx-148c0.firebaseapp.com",
+      projectId: "stegx-148c0",
+      storageBucket: "stegx-148c0.appspot.com",
+      messagingSenderId: "436928947016",
+      appId: "1:436928947016:web:db0f12780156e74062897d",
+      measurementId: "G-HVER2D87HQ"
+    };
+          
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase();
+            const auth = getAuth(app);
+    
+            let Email = document.getElementById("signupEmail");
+            let Password = document.getElementById("signupPassword");
+    
+            let RegisterUser = evt => {
+                evt.preventDefault();
+            
+                createUserWithEmailAndPassword(auth, Email.value, Password.value)
+                    .then((credentials) => {
+                        set(ref(db,'UserAuthList/'+ credentials.user.uid),{
+                            Email:Email.value,
+                            Password:Password.value,
+                        })
+                    })
+                    .catch((error) => {
+                        alert(error.message);
+                        console.log(error.code);
+                        console.log(error.message);
+                    });
+            }
+            
+            regUser.addEventListener('click',RegisterUser);
+        </script>
+</body>
+</html>
