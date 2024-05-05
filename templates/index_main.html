@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style_mian.css') }}">
+
+
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>StegX</title>
+    </head>
+
+    <body>
+        <div class="absolute">
+            <div class="bg-shape1 bg-teal opacity-50 bg-blur"></div>
+            <div class="bg-shape1 bg-primary opacity-50 bg-blur"></div>
+            <div class="bg-shape1 bg-purple opacity-50 bg-blur"></div>
+        </div>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+          
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">StegX</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">Encode</a></li>
+                        <li class="nav__item"><a href="#work" class="nav__link">Decode</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Connect Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            <section class="home bd-grid" id="home">
+                <div class="home__data">
+                    <h1 class="home__title">Welcome<br>to  <span class="home__title-color">StegX</span><br>Image steganography Tool</h1>
+
+                    <a href="#" class="button">Connect Us!</a>
+                </div>   
+            </section>
+
+            <!--===== ABOUT =====-->
+            <section class="about section " id="about">
+                <h2 class="section-title">About</h2>
+                
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        <img src="./steg.png" alt="">
+                    </div>
+                    
+                    <div>
+                        <h2 class="about__subtitle">Hey I am Steg tool</h2>
+                        <p class="about__text"> Experience the pinnacle of modern encryption technology as we empower 
+                            you to safeguard your data with elegance and efficiency. Welcome to a world
+                             where security meets sophistication.</p>           
+                    </div>                                   
+                </div>
+                <div class="wrapper">
+                    <div class="absolute">
+                        <div class="bg-shape1 bg-teal opacity-50 bg-blur"></div>
+                        <div class="bg-shape1 bg-primary opacity-50 bg-blur"></div>
+                        <div class="bg-shape1 bg-purple opacity-50 bg-blur"></div>
+                    </div>
+                    <!-- card one  -->
+                    <div class="card">
+                        <div class="face front">
+                            <div class="content">
+                                <h3>HIDE</h3>
+                            </div>
+                            
+                        </div>
+                        <div class="face back">
+                            <div class="content">
+                                <p>Keep your data safe by encrypting it with AES, 
+                                    then hide it inside images using steganography for added security.</p>
+                            </div>
+                        </div>
+                    </div>
+                      <!-- card two -->
+                      <div class="card">
+                        <div class="face front">
+                            <div class="content">
+                                <h3>REVEAL</h3>
+                            </div>
+                            
+                        </div>
+                        <div class="face back">
+                            <div class="content">
+                                <p>Upload the encoded image and provide the decryption key. Our tool will extract 
+                                    and decrypt the hidden data to reveal the original message.</p>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <!--===== ENCODE =====-->
+            <section class="skills section" id="skills">
+                <h2 class="section-title">Encode</h2>
+
+                <div class="skills__container bd-grid">          
+                    <div>
+                        <h2 class="skills__subtitle">Hide your text Here</h2>
+                        <p class="skills__text">
+                            Our innovative tool allows you to hide your text messages, quotes, or any other content into image of your choice. 
+                            Simply type in your desired text, choose a secure key and click on Hide Message.  </p>
+                    
+                            <div id="encode">
+                                <h2>ENCODE</h2>
+                                <input type="file" id="encodeImage" class="img_input" accept="image/*">
+                                <input type="text" id="encodeKey" class="key_input" placeholder="Enter a 16-character key">
+                                <input type="text" id="message" class="msg_input" placeholder="Message...">
+                                <button id="encodeSubmit" class="btn_input">Submit</button>
+                            </div>
+                      </div>
+                </div>               
+            </section>
+
+            <!--===== WORK =====-->
+            <section class="work section" id="work">   ?
+                <h2 class="section-title">Decode</h2>
+                
+                <div class="skills__container bd-grid">          
+                    <div>
+                        <h2 class="skills__subtitle">Reveal Hidden Text</h2>
+                        <p class="skills__text">
+                            Upload an encoded image and provide the decryption key to reveal the hidden message. 
+                            Our tool will extract and decrypt the concealed data, 
+                            allowing you to view the original text. </p>
+                            <div id="decode">
+                                <h2>DECODE</h2>
+                                <input type="file" id="decodeImage" class="img_input" accept="image/*">
+                                <input type="text" id="decodeKey" class="key_input" placeholder="Enter a 16 character key">
+                                <button id="decodeSubmit" class="btn_input">Submit</button>
+                                <div id="messageBox">        </div>
+                                <div id="errorBox" style="color: red;"></div>
+                            </div>
+                </div>
+
+               
+            </section>
+
+            <!--===== CONTACT =====-->
+            <section class="contact section" id="contact">
+                <h2 class="section-title">Connect Us!</h2>
+
+                <div class="contact__container bd-grid">
+                    <form action="" class="contact__form">
+                            <input type="text" id="name" placeholder="Name" class="contact__input" autocomplete="off">
+                                                                                
+                            <input type="mail" id="email" placeholder="Email" class="contact__input" autocomplete="off">
+                                                                      
+                            <input type="text" id="message" placeholder="Message" 
+                                cols="30" rows="10" class="contact__input" autocomplete="off"></input>
+                                       
+                        <button type="submit" class="contact_button button">Send</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <p class="footer__title">StegX</p>
+            <div class="footer__social">
+                <a href="#" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+                <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+            </div>
+            <p class="footer__copy">&#169;  All rigths reserved</p>
+        </footer>
+
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
+</html>
