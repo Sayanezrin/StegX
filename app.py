@@ -7,46 +7,6 @@ from firebase_admin import credentials,auth
 
 app = Flask(__name__, template_folder='templates')
 
-# Initialize Firebase
-cred = credentials.Certificate('credentials.json')
-firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://stegx-148c0-default-rtdb.firebaseio.com/',
-    'databaseAuthVariableOverride': {
-        'uid': 'firebase-adminsdk-wyv01@stegx-148c0.iam.gserviceaccount.com'
-    }
-})
-
-# Route for the home page
-@app.route('/')
-def index():
-    return render_template('login.html')  # Redirect to login page by default
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        try:
-            user = auth.sign_in_with_email_and_password(email, password)
-            return redirect(url_for('home'))  # Redirect to home page after successful login
-        except Exception as e:
-            print(f"Error logging in: {e}")
-            return "Error logging in"
-    return render_template('login.html')
-
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        try:
-            user = auth.create_user(email=email, password=password)
-            return redirect(url_for('login'))  # Redirect to login page after successful signup
-        except Exception as e:
-            print(f"Error creating user: {e}")
-            return "Error creating user"
-    return render_template('signup.html')
-
 # Route for encoding (hide message in image)
 @app.route('/encode', methods=['POST'])
 def encode():
