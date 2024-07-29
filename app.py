@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, jsonify, send_file
-import firebase_admin
 from encode import hide_data
 from decode import decode_data
-from flask import redirect, url_for
-from firebase_admin import credentials,auth
 
 app = Flask(__name__, template_folder='templates')
 
