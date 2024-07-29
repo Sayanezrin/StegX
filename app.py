@@ -7,15 +7,6 @@ from firebase_admin import credentials,auth
 
 app = Flask(__name__, template_folder='templates')
 
-# Initialize Firebase
-cred = credentials.Certificate('credentials.json')
-firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://stegx-148c0-default-rtdb.firebaseio.com/',
-    'databaseAuthVariableOverride': {
-        'uid': 'firebase-adminsdk-wyv01@stegx-148c0.iam.gserviceaccount.com'
-    }
-})
-
 # Route for the home page
 @app.route('/')
 def index():
