@@ -2,6 +2,7 @@ from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
 from PIL import Image
 
+
 def aes_cbc_decrypt(encrypted_data, key):
     iv = encrypted_data[:16]
     cipher = AES.new(key, AES.MODE_CBC, iv)
